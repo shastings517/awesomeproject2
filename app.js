@@ -12,6 +12,7 @@ var express = require('express'),
     postsRoutes = require("./routes/posts"),
     // commentsRoutes = require("./routes/comments"),
     accessRoutes = require("./routes/access");
+    request = require('request');
 
 app.set('view engine', 'ejs');
 app.use(morgan('tiny'));
@@ -43,6 +44,6 @@ app.get('*', function(req,res){
 });
 
 //START SERVER
-app.listen(process.env.PORT || 3000, function() {
-  "Server is listening on port 3000";
+app.listen(process.env.PORT || 4000, function() {
+  "Server is listening on port 4000";
 });

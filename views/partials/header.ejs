@@ -32,7 +32,7 @@
             <ul class="nav navbar-nav">
               <li><a href="/signup">Home</a></li>
               <% if(currentUser) { %>
-              <li><a><%= currentUser.username %></a></li> <!--WHY DOES THIS HAVE TO BE CAPITALIZED-->
+              <li><a href="/users/show"><%= currentUser.username %></a></li> <!--WHY DOES THIS HAVE TO BE CAPITALIZED-->
               <% } %>
             </ul>
             <ul class="nav navbar-nav navbar-right">

@@ -37,45 +37,47 @@
   <div id="comments"></div>
 </div> -->
 
-
-  <table style="" class="table">
-    <div class="container text-center">
-      <h1>ENTRY DETAILS</h1>
-      <thead class="tdHeader text-center">
-        <td>Date</td>
-        <td>Sleep</td>
-        <td>Meditate</td>
-        <td>Diet</td>
-      </thead>
-
-        
-        
-        
-      <tr class="text-center">
-        <td><%= entry.date %></td>
-        <td><%= entry.sleep %></td>
-        <td><%= entry.meditate %></td>
-        <td><%= entry.diet %></td> 
-      </tr>
-      <tr>
-        <thead>
-          <td>High</td>
-          <td><%= entry.high %></td>
-          
+<table style="" class="table">
+      <div class="container text-center">
+        <h1>ENTRY DETAILS</h1>
+        <thead class="tdHeader text-center">
+          <td>Date</td>
+          <td>Sleep</td>
+          <td>Meditate</td>
+          <td>Diet</td>
         </thead>
-      </tr>
-      <tr>
-        <td>Low</td>
-        <td><%= entry.low %></td>
-      </tr>
-      <tr>
-        <td>Improvements</td>
-        <td><%= entry.Improvements %></td>
-      </tr>
+
+          
+          
+          
+        <tr class="text-center">
+          <td><%= post.date %></td>
+          <td><%= post.sleep %></td>
+          <td><%= post.meditate %></td>
+          <td><%= post.diet %></td> 
+        </tr>
+        <tr>
+          <thead>
+            <td>High</td>
+            <td><%= post.high %></td>
+            
+          </thead>
+        </tr>
+        <tr>
+          <td>Low</td>
+          <td><%= post.low %></td>
+        </tr>
+        <tr>
+          <td>Improvements</td>
+          <td><%= post.improvements %></td>
+        </tr>
+      </div>
+    </table>
+    <div>
+      <a href="/posts/<%= post.id%>/edit"><button class="btn btn-lg">Edit</button></a>
     </div>
-  </table>
-  <div class="text-center">
-    <a href="/"><button class="btn btn-lg">Home</button></a>
-  </div>
+    <div class="text-center">
+      <a href="/"><button class="btn btn-lg">Home</button></a>
+    </div>
 
 <% include ../partials/footer %>

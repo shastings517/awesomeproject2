@@ -41,15 +41,41 @@ router.post('/', function(req,res) {
     } 
     else {
       db.User.findById(req.session.id, function(err, user) {
-        user.posts.push(post);
-        console.log(post);
-        post.user = user._id;
-        post.save();
-        user.save();
-        res.redirect("/posts");
+        request("http://gateway-a.watsonplatform.net/calls/text/TextGetTextSentiment?apikey=" + process.env.ALCHEMY_API_KEY + "&outputMode=json&text=" + encodeURIComponent(req.body.post.high),
+          function (error, response, body) {
+            if (!error && response.statusCode == 200) {
+              console.log(JSON.parse(body).docSentiment.score);
+              post.highSentiment = JSON.parse(body).docSentiment.score;
+
+              request("http://gateway-a.watsonplatform.net/calls/text/TextGetTextSentiment?apikey=" + process.env.ALCHEMY_API_KEY + "&outputMode=json&text=" + encodeURIComponent(req.body.post.low),
+              function (error, response, body) {
+                if (!error && response.statusCode == 200) {
+                  console.log(JSON.parse(body).docSentiment.score);
+                  post.lowSentiment = JSON.parse(body).docSentiment.score;
+                  user.posts.push(post);
+                  console.log(post);
+                  post.user = user._id;
+                  post.save();
+                  user.save();
+                  res.redirect("/posts");
+                }
+            });
+          }
+          else {
+              console.log("uhhh we fucked up...", error, response);
+          }
+        });
+
+        
     });
     }
   });
+});
+
+router.get('/', function(req, res){
+  console.log(req.user.accessToken);
+  
+  res.render('user/index', { user: req.user });
 });
 
 //SHOW POST

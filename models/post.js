@@ -6,7 +6,9 @@ mongoose.set('debug', true);
 
 var postSchema = new mongoose.Schema ({
                     high: String,
+                    highSentiment: Number,
                     low: String,
+                    lowSentiment: Number,
                     sleep: Number,
                     meditate: String,
                     diet: String,
@@ -15,7 +17,7 @@ var postSchema = new mongoose.Schema ({
                       type: mongoose.Schema.Types.ObjectId,
                       ref: "User"
                     },
-                    date: {type: String, default: datePost}
+                    date: {type: String, required: true, default: datePost}
                   });
 
 

@@ -28,44 +28,46 @@
     </div>
   </div> -->
 
-
-    <table style="" class="table">
-      <div class="container text-center">
-        <h1>ENTRY DETAILS</h1>
-        <thead class="tdHeader text-center">
-          <td>Date</td>
-          <td>Sleep</td>
-          <td>Meditate</td>
-          <td>Diet</td>
-        </thead>
-
-          
-          
-          
-        <tr class="text-center">
-          <td><%= entry.date %></td>
-          <td><%= entry.sleep %></td>
-          <td><%= entry.meditate %></td>
-          <td><%= entry.diet %></td> 
-        </tr>
-        <tr>
-          <thead>
-            <td>High</td>
-            <td><%= entry.high %></td>
-            
-          </thead>
-        </tr>
-        <tr>
-          <td>Low</td>
-          <td><%= entry.low %></td>
-        </tr>
-        <tr>
-          <td>Improvements</td>
-          <td><%= entry.Improvements %></td>
-        </tr>
+  <div class="container">
+    <form action="/posts/<%=post.id%>?_method=put" method="POST">
+      <h1>EDIT ENTRY</h1>
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon1">Date</span>
+        <input type="text" class="form-control" placeholder="date" aria-describedby="basic-addon1" name="post[date]" value="<%= post.date %>">
       </div>
-    </table>
-    <div class="text-center">
-      <a href="/"><button class="btn btn-lg">Home</button></a>
-    </div>
+
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon1">High</span>
+        <input type="text" class="form-control" placeholder="high-point" aria-describedby="basic-addon1" name="post[zenith]" value="<%= post.high %>">
+      </div>
+
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon1">Low</span>
+        <input type="text" class="form-control" placeholder="low point" aria-describedby="basic-addon1" name="post[nadir]" value="<%= post.low %>">
+      </div>
+
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon1">Sleep</span>
+        <input type="text" class="form-control" placeholder="hours of sleep last night?" aria-describedby="basic-addon1" name="post[sleep]" value="<%= post.sleep %>">
+      </div>
+
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon1">Meditate</span>
+        <input type="text" class="form-control" placeholder="did you meditate today?" aria-describedby="basic-addon1" name="post[meditate]" value="<%= post.meditate %>">
+      </div>
+
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon1">Diet</span>
+        <input type="text" class="form-control" placeholder="diet" aria-describedby="basic-addon1" name="post[diet]" value="<%= post.diet %>">
+      </div>
+
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon1">Improvements</span>
+        <input type="text" class="form-control" placeholder="improvements" aria-describedby="basic-addon1" name="post[improvements]" value="<%= post.improvements %>">
+      </div>
+      <input type="submit" value="submit" class="btn btn-lg submitButton">
+    </form>
+  </div>
+
+    
 <% include ../partials/footer %>
