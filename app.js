@@ -1,3 +1,4 @@
+require('dotenv').load();
 var express = require('express'),
     app = express(),
     bodyParser = require('body-parser'),
@@ -20,7 +21,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 app.use(session({
   maxAge: 3600000,
-  secret: 'supersecretro',
+  secret: process.env.COOKIE_SECRET,
   name: "double chocochip"
 }));
 
