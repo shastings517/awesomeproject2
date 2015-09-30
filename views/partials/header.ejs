@@ -30,9 +30,9 @@
           </div>
           <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-              <li class="active"><a href="/signup">Home</a></li>
+              <li <% if (activeNav === "home") { %><%=class="active"%><% } %>><a href="/signup">Home</a></li>
               <% if(currentUser) { %>
-              <li><%= currentUser %></li>
+              <li><a><%= currentUser.username %></a></li> <!--WHY DOES THIS HAVE TO BE CAPITALIZED-->
               <% } %>
               <!-- <li><a href="#">About</a></li>
               <li><a href="#">Contact</a></li>

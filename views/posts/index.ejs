@@ -2,19 +2,49 @@
   <div class="container-fluid">
     <div class="row">
       <% if(currentuser !== ""){ %>
-      <div class="col-xs-8 col-xs-offset-2">
-        <h1 class="text-center"><%= currentuser.username %></h1>
-      </div>
-      <div class="col-xs-2">
-        <div class="btn btn-default">
-          <a href="/posts/new">Add a new post</a>
+        <div class="col-xs-8 col-xs-offset-2">
+          <h1 class="text-center"><%= currentuser.username %></h1>
         </div>
-      </div>  
+        <div class="col-xs-2">
+          <div class="btn btn-default">
+            <a href="/posts/new">Add a new post</a>
+          </div>
+        </div>  
       <% }  %>
     </div>
-    <h1 class="ui dividing header">Posts</h1>
+    <h1>Posts</h1>
   </div>
-  <div id="allPosts" class="ui page">
+  <table>
+    <thead>
+      <td>Date</td>
+      <td>Sleep</td>
+      <td>Meditate</td>
+      <td>Diet</td>
+      <!-- <td>High</td>
+      <td>Low</td> -->
+      <!-- <td>Improvements</td> -->
+    </thead>
+  <% posts.forEach(function (el) { %>
+    <tr>
+      <td><a href="/posts/<%= el.id%>"><%=el.date%></a></td>
+      <!-- <td><%= el.high %></td>
+      <td><%= el.low %></td> -->
+      <td><%= el.sleep %></td>
+      <td><%= el.meditate %></td>
+      <td><%= el.diet %></td>
+      <!-- <td><%= el.improvements %></td> -->
+      <td><a href="/posts/<%= el.id%>/edit"><button class="btn btn-lg">Edit</button></a></td>
+      <td>
+        <form action="/posts/<%= el.id%>?_method=delete" method="POST"><button class="btn btn-lg">Delete</button></form>
+      </td>
+    </tr>
+  <% }) %>
+  </table>
+
+
+
+
+<!--   <div id="allPosts" class="ui page">
     <% posts.forEach(function(post) {  %>
     <div class="ui items">
       <div class="item">
@@ -22,13 +52,52 @@
           <img src="<%= post.media  %>">
         </div>
         <div class="middle aligned content">
+          <a class="header" href="/posts/<%= post.id %>"><%= post.date %></a>
           <span class="meta date"><%= post.date %></span>
-          <a class="header" href="/posts/<%= post.id %>"><%= post.title %></a>
           <span><em>Created by: <%= currentuser.username %></em> - </span>
         </div>
       </div>
     </div>
     <% }) %>
   </div>
+
+<div class="container">
+  <table class="table">
+    <div class="row">
+      <div class="col-xs-10 text-center">
+        <h1>DIARY</h1>
+      </div>
+      <div class="col-xs-2">
+        <a href="/posts/new" class="pull-right"><button class="btn btn-lg addBtn">Add Entry</button></a>
+      </div>  
+    </div>
+
+    <thead>
+      <td>Date</td>
+      <td>Sleep</td>
+      <td>Meditate</td>
+      <td>Diet</td>
+      <! <td>High</td>
+      <td>Low</td> -->
+      <!-- <td>Improvements</td> -->
+    <!-- </thead>
+  <% entry.forEach(function (el) { %>
+    <tr>
+      <td><a href="/posts/<%= el.id%>"><%=el.date%></a></td>
+      <! <td><%= el.high %></td>
+      <td><%= el.low %></td> -->
+      <!-- <td><%= el.sleep %></td>
+      <td><%= el.meditate %></td>
+      <td><%= el.diet %></td> -->
+      <!-- <td><%= el.improvements %></td> -->
+      <!-- <td><a href="/posts/<%= el.id%>/edit"><button class="btn btn-lg">Edit</button></a></td>
+      <td>
+        <form action="/posts/<%= el.id%>?_method=delete" method="POST"><button class="btn btn-lg">Delete</button></form>
+      </td>
+    </tr>
+  <% }) %>
+  </table>
+  </div> -->
+
 <% include ../partials/footer %>
 
