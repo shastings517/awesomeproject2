@@ -1,0 +1,41 @@
+<% include ../partials/header %>
+<!-- <div class="ui two column centered grid">
+  <div class="column">
+    <h1>Sign up</h1>
+    <form action="/signup" method="POST">
+      <div class="ui form segment">
+        <div class="field">
+          <label for="user">Choose a username:</label>
+          <input type="text" name="user[username]" id="user" placeholder="Enter username" autofocus>
+        </div>
+        <div class="field">
+          <label for="pass">Password:</label>
+          <input type="password" name="user[password]" id="pass" placeholder="Enter password" autofocus>
+        </div>
+        <input class="ui submit purple button" type="submit" value="Sign up">
+        <a href="/login">Already have an account? Login in here</a>
+      </div>
+    </form>
+  </div>
+</div>
+ -->
+
+<h1 class="text-center">Sign Up</h1>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2"> 
+      <form action='/signup' class="jumbotron" method='POST'>
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input type="text" class="form-control" name='user[username]' id="name" autofocus required placeholder="username">
+        </div>
+        <div class="form-group">
+          <label for="password">Password:</label>
+          <input type="password" class="form-control" name='user[password]' id="password" placeholder='password'>
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form>
+    </div> 
+  </div>
+</div>
+<% include ../partials/footer %>
