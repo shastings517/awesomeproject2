@@ -12,7 +12,7 @@ var userSchema = new mongoose.Schema ({
                         unique: true
                         },
                       password: {type: String, required: true},
-                      avatar: String,
+                      // avatar: String,
                       posts: [{
                         type: mongoose.Schema.Types.ObjectId,
                         ref: "Post"

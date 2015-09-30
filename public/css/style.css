@@ -33,3 +33,8 @@
 .ui.items > .item .extra {
   width: 168px;
 }
+
+.input-group-addon {
+    min-width: 150px;
+    text-align:left;
+}

@@ -6,7 +6,7 @@ var datePost = (date.getMonth() + 1) + "/" + date.getDate() + "/" + date.getFull
 mongoose.set('debug', true);
 
 var postSchema = new mongoose.Schema ({
-                    body: {type: String, required: true},
+                    // body: {type: String, required: true},
                     high: String,
                     low: String,
                     sleep: Number,
