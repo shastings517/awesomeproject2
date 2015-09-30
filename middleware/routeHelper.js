@@ -12,7 +12,7 @@ var routeHelpers = {
 
   ensureCorrectUserForPost: function(req, res, next) {
     db.Post.findById(req.params.id).populate('author').exec(function(err,post){
-      console.log(post)
+      console.log(post);
       if (post.author.id != req.session.id) {
         res.redirect('/posts');
       }
@@ -24,8 +24,8 @@ var routeHelpers = {
 
   ensureCorrectUserForComment: function(req, res, next) {
     db.Comment.findById(req.params.id).populate('author').exec(function(err,comment){
-      console.log(comment)
-      if (comment.author != undefined && comment.author.id != req.session.id) {
+      console.log(comment);
+      if (comment.author !== undefined && comment.author.id != req.session.id) {
         res.redirect('/posts/'+ comment.post +'/comments');
       }
       else {

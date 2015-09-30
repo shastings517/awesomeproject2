@@ -19,7 +19,7 @@ router.post("/login", function (req, res) {
       res.redirect("/posts");
     } else {
       console.log(err);
-      res.render('users/login', {err:err});
+      res.render('users/signup', {err:err});
     }
   });
 });

@@ -12,15 +12,10 @@ var userSchema = new mongoose.Schema ({
                         unique: true
                         },
                       password: {type: String, required: true},
-                      // avatar: String,
                       posts: [{
                         type: mongoose.Schema.Types.ObjectId,
                         ref: "Post"
                       }],
-                      // comments: [{
-                      //   type: mongoose.Schema.Types.ObjectId,
-                      //   ref: "Comment"
-                      // }]
                     });
 
 userSchema.pre('save', function(next) {

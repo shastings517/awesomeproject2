@@ -1,6 +1,6 @@
 <% include ../partials/header %>
 
-<script src='/javascripts/comments.js'></script>
+<!-- <script src='/javascripts/comments.js'></script>
 <div class="ui page grid">
   <h1 class="ui dividing header"><%= post.title  %></h1>
 </div>
@@ -35,7 +35,47 @@
   <a href="/posts" class="ui basic button">Back</a>
   <h4 class="ui header"></h4>
   <div id="comments"></div>
-</div>
+</div> -->
 
+
+  <table style="" class="table">
+    <div class="container text-center">
+      <h1>ENTRY DETAILS</h1>
+      <thead class="tdHeader text-center">
+        <td>Date</td>
+        <td>Sleep</td>
+        <td>Meditate</td>
+        <td>Diet</td>
+      </thead>
+
+        
+        
+        
+      <tr class="text-center">
+        <td><%= entry.date %></td>
+        <td><%= entry.sleep %></td>
+        <td><%= entry.meditate %></td>
+        <td><%= entry.diet %></td> 
+      </tr>
+      <tr>
+        <thead>
+          <td>High</td>
+          <td><%= entry.high %></td>
+          
+        </thead>
+      </tr>
+      <tr>
+        <td>Low</td>
+        <td><%= entry.low %></td>
+      </tr>
+      <tr>
+        <td>Improvements</td>
+        <td><%= entry.Improvements %></td>
+      </tr>
+    </div>
+  </table>
+  <div class="text-center">
+    <a href="/"><button class="btn btn-lg">Home</button></a>
+  </div>
 
 <% include ../partials/footer %>
