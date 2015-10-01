@@ -24,9 +24,9 @@
   <% posts.forEach(function (el) { %>
     <tr>
       <td><a href="/posts/<%= el.id%>"><%=el.date%></a></td>
-      <td><%= el.sleep %></td>
-      <td><%= el.meditate %></td>
-      <td><%= el.diet %></td>
+      <td><%= el.high.slice(0, 90) %>...</td>
+      <!-- <td><%= el.meditate %></td> -->
+      <td><%= el.score %></td>
       <!-- <td><a href="/posts/<%= el.id%>/edit"><button class="btn btn-lg">Edit</button></a></td> -->
       <td>
         <form action="/posts/<%= el.id%>?_method=delete" method="POST"><button class="btn btn-lg">Delete</button></form>
