@@ -43,12 +43,16 @@ router.post('/', function(req,res) {
       db.User.findById(req.session.id, function(err, user) {
         request("http://gateway-a.watsonplatform.net/calls/text/TextGetTextSentiment?apikey=" + process.env.ALCHEMY_API_KEY + "&outputMode=json&text=" + encodeURIComponent(req.body.post.high),
           function (error, response, body) {
+            console.log("FIRST API CALL ERRORS?", error);
+            console.log("FIRST API CALL BODY?", body);
             if (!error && response.statusCode == 200) {
               console.log(JSON.parse(body).docSentiment.score);
               post.highSentiment = JSON.parse(body).docSentiment.score;
 
               request("http://gateway-a.watsonplatform.net/calls/text/TextGetTextSentiment?apikey=" + process.env.ALCHEMY_API_KEY + "&outputMode=json&text=" + encodeURIComponent(req.body.post.low),
               function (error, response, body) {
+                console.log("FIRST API CALL ERRORS?", error);
+                console.log("FIRST API CALL BODY?", body);
                 if (!error && response.statusCode == 200) {
                   post.score = 100;
                   console.log(JSON.parse(body).docSentiment.score);

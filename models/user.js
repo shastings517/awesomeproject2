@@ -7,13 +7,11 @@ mongoose.set('debug', true);
 var userSchema = new mongoose.Schema ({
                       firstName: {
                         type: String,
-                        required: true,
-                        unique: true
+                        required: true
                         },
                       lastName: {
                         type: String,
-                        required: true,
-                        unique: true
+                        required: true
                         },
                       password: {type: String, required: true},
                       posts: [{
