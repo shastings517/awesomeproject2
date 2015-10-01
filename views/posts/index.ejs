@@ -3,7 +3,6 @@
     <div class="row">
       <% if(currentuser){ %>
         <div class="col-xs-8 col-xs-offset-2">
-          <!-- <h1 class="text-center"><%= currentuser.username %></h1> -->
           <h1 class="text-center">Posts</h1>
         </div>
         <div class="col-xs-2">
@@ -11,29 +10,23 @@
         </div>  
       <% }  %>
     </div>
-    <!-- <h1>Posts</h1> -->
   </div>
   <table class="table table-hover">
     <thead>
       <td class="col-xs-3"><strong>Date</strong></td>
       <td class="col-xs-8"><strong>High</strong></td>
-      <!-- <td>Meditate</td> -->
       <td class="col-xs-1"><strong>Score</strong></td>
-      <!-- <td class="col-xs-3"></td> -->
     </thead>
   <% posts.forEach(function (el) { %>
     <tr>
       <td><a href="/posts/<%= el.id%>"><%=el.date%></a></td>
       <td><%= el.high.slice(0, 90) %>...</td>
-      <!-- <td><%= el.meditate %></td> -->
       <td><%= el.score %></td>
-      <!-- <td><a href="/posts/<%= el.id%>/edit"><button class="btn btn-lg">Edit</button></a></td> -->
       <td>
         <form action="/posts/<%= el.id%>?_method=delete" method="POST"><button class="btn btn-lg">Delete</button></form>
       </td>
     </tr>
   <% }) %>
   </table>
-
 <% include ../partials/footer %>
 
