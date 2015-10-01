@@ -3,6 +3,7 @@ var express = require("express");
 var router = express.Router();
 var routeMiddleware = require("../middleware/routeHelper");
 var loginMiddleware = require("../middleware/loginHelper");
+var request = require("request");
 
 router.use(loginMiddleware);
 
