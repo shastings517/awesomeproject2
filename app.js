@@ -1,19 +1,18 @@
 require('dotenv').load();
-var express = require('express'),
-    app = express(),
-    bodyParser = require('body-parser'),
-    morgan = require('morgan'),
-    methodOverride = require('method-override'),
-    session = require("cookie-session"),
-    db = require('./models'),
-    loginMiddleware = require("./middleware/loginHelper"),
-    routeMiddleware = require("./middleware/routeHelper"),
-    usersRoutes = require("./routes/users"),
-    postsRoutes = require("./routes/posts"),
-    // commentsRoutes = require("./routes/comments"),
-    accessRoutes = require("./routes/access"),
-    request = require('request'),
-    favicon = require('serve-favicon');
+var express = require('express');
+var app = express();
+var bodyParser = require('body-parser');
+var morgan = require('morgan');
+var methodOverride = require('method-override');
+var session = require("cookie-session");
+var db = require('./models');
+var loginMiddleware = require("./middleware/loginHelper");
+var routeMiddleware = require("./middleware/routeHelper");
+var usersRoutes = require("./routes/users");
+var postsRoutes = require("./routes/posts");
+var accessRoutes = require("./routes/access");
+var request = require('request');
+var favicon = require('serve-favicon');
 
 
 app.set('view engine', 'ejs');
