@@ -50,12 +50,51 @@ router.post('/', function(req,res) {
               request("http://gateway-a.watsonplatform.net/calls/text/TextGetTextSentiment?apikey=" + process.env.ALCHEMY_API_KEY + "&outputMode=json&text=" + encodeURIComponent(req.body.post.low),
               function (error, response, body) {
                 if (!error && response.statusCode == 200) {
+                  post.score = 100;
                   console.log(JSON.parse(body).docSentiment.score);
                   post.lowSentiment = JSON.parse(body).docSentiment.score;
-                  post.score = post.lowSentiment + post.highSentiment;
+                  console.log(post.date);
+                  // post.score = post.lowSentiment + post.highSentiment;
                   user.posts.push(post);
                   console.log(post);
                   post.user = user._id;
+                  //assign point values to post schema variables
+                  if(post.sleep >= 8){
+                    post.score += 0;
+                  }
+                  else if(post.sleep >= 5){
+                    post.score -= 10;
+                  }
+                  if(post.sleep >= 1){
+                    post.score -= 20;
+                  }
+                  if(post.sleep === 0){
+                    post.score -= 30;
+                  }
+                  if(post.meditate === "no"){
+                    post.score -= 20;
+                  }
+                  if(post.diet === "poor"){
+                    post.score -= 30;
+                  }
+                  else if(post.diet === "ok"){
+                    post.score -= 20;
+                  }
+                  else if(post.diet === "fair"){
+                    post.score -= 10;
+                  }
+                  if(post.improvements === "" || post.improvements === "none" || post.improvements === "nothing" || post.improvements === "no"){
+                    post.score -=10;
+                  }
+                  if(post.lowSentiment + post.highSentiment > 0){
+                    post.score += ((post.lowSentiment + post.highSentiment) * 10);
+                    post.score.toFixed(2);
+                  }
+                  else{
+                    post.score -= ((post.lowSentiment + post.highSentiment) * 10);
+                    post.score.toFixed(2);
+                  }
+                  
                   post.save();
                   user.save();
                   res.redirect("/posts");

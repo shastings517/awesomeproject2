@@ -10,8 +10,8 @@ var postSchema = new mongoose.Schema ({
                     low: String,
                     lowSentiment: Number,
                     sleep: Number,
-                    meditate: String,
-                    diet: String,
+                    meditate: {type: String, lowercase: true},
+                    diet: {type: String, lowercase: true},
                     improvements: String,
                     score: Number, 
                     author: {

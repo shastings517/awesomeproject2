@@ -3,19 +3,19 @@
   <div class="container-fluid">
     <div class="row">
       <% if(currentuser){ %>
-        <div class="col-xs-10">
-          <h1>Posts</h1>
+        <div class="col-xs-10 text-left">
+          <h1>Entries</h1>
         </div>
         <div class="col-xs-2 text-right">
-          <a href="/posts/new" class="btn btn-default">Add a new post</a>
+          <a href="/posts/new" class="btn btn-default">Add Entry</a>
         </div>  
       <% }  %>
     </div>
   </div>
   <table class="table table-hover">
     <thead>
-      <td class="col-xs-3"><strong>Date</strong></td>
-      <td class="col-xs-8"><strong>High</strong></td>
+      <td class="col-xs-2"><strong>Date</strong></td>
+      <td class="col-xs-9"><strong>Entry</strong></td>
       <td class="col-xs-1"><strong>Score</strong></td>
     </thead>
   <% posts.forEach(function (el) { %>
