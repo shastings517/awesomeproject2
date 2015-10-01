@@ -16,7 +16,9 @@
   <link rel="stylesheet" href="/css/style.css">
 
   <!-- chart.js -->
-  <script src="https://cdnjs.com/libraries/chart.js"></script>
+  <link href="https://cdnjs.com/libraries/chart.js">
+
+  <script src="Chart.js"></script>
   <body>
 
     <div class="container">
@@ -37,15 +39,19 @@
             <ul class="nav navbar-nav">
               <li class="active"><a href="/posts">Home</a></li>
               <% if(currentUser) { %>
-              <li><a href="/users/show"><strong><%= currentUser.username %></strong></a></li>
+              <li><a href="/users/show"><strong><%= currentUser.firstName + " " + currentUser.lastName %></strong></a></li>
               <% } %>
             </ul>
             <ul class="nav navbar-nav navbar-right">
               <% if(!currentUser) { %>
               <form action="/login" method="POST" class="form-inline">
                 <div class="form-group">
-                  <label class="sr-only" for="exampleInputEmail3">Username</label>
-                  <input type="text" class="form-control" name="user[username]" id="exampleInputEmail3" placeholder="Username">
+                  <label class="sr-only" for="exampleInputEmail3">First Name</label>
+                  <input type="text" class="form-control" name="user[firstName]" id="exampleInputEmail3" placeholder="First Name">
+                </div>
+                <div class="form-group">
+                  <label class="sr-only" for="exampleInputEmail2">Last Name</label>
+                  <input type="text" class="form-control" name="user[lastName]" id="exampleInputEmail2" placeholder="Last Name">
                 </div>
                 <div class="form-group">
                   <label class="sr-only" for="exampleInputPassword3">Password</label>

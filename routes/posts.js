@@ -74,6 +74,7 @@ router.post('/', function(req,res) {
                   if(post.meditate === "no"){
                     post.score -= 20;
                   }
+                  console.log(post.score);
                   if(post.diet === "poor"){
                     post.score -= 25;
                   }
@@ -90,16 +91,9 @@ router.post('/', function(req,res) {
                   if(post.improvements === "" || post.improvements === "none" || post.improvements === "nothing" || post.improvements === "no"){
                     post.score -=10;
                   }
-                  console.log(post.score);
-                  if(post.lowSentiment + post.highSentiment > 0){
-                    post.score += (post.lowSentiment + post.highSentiment) * 10;
-                    post.score.toFixed(2);
-                  }
-                  else if(post.lowSentiment + post.highSentiment < 0){
-                    post.score -= (post.lowSentiment + post.highSentiment) * 10;
-                    post.score.toFixed(2);
-                  }
-                  console.log(post.score);
+
+                  post.score += (post.lowSentiment + post.highSentiment) * 9;
+                  post.score = (post.score).toFixed(2);
                   
                   post.save();
                   user.save();
@@ -118,11 +112,11 @@ router.post('/', function(req,res) {
   });
 });
 
-router.get('/', function(req, res){
-  console.log(req.user.accessToken);
+// router.get('/', function(req, res){
+//   console.log(req.user.accessToken);
   
-  res.render('user/index', { user: req.user });
-});
+//   res.render('user/index', { user: req.user });
+// });
 
 //SHOW POST
 router.get('/:id', function(req,res){

@@ -5,10 +5,14 @@ var mongoose = require('mongoose');
 mongoose.set('debug', true);
 
 var userSchema = new mongoose.Schema ({
-                      username: {
+                      firstName: {
                         type: String,
                         required: true,
-                        lowercase: true,
+                        unique: true
+                        },
+                      lastName: {
+                        type: String,
+                        required: true,
                         unique: true
                         },
                       password: {type: String, required: true},

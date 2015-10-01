@@ -6,7 +6,7 @@ var loginMiddleware = require("../middleware/loginHelper");
 
 router.use(loginMiddleware);
 
-router.get('/users/show', routeMiddleware.preventLoginSignup, function(req,res){
+router.get('/users/show', function(req,res){
   res.render('users/show');
 });
 

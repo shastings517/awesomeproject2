@@ -6,8 +6,12 @@
     <div class="col-md-8 col-md-offset-2"> 
       <form action='/signup' class="jumbotron" method='POST'>
         <div class="form-group">
-          <label for="name">Name:</label>
-          <input type="text" class="form-control" name='user[username]' id="name" autofocus required placeholder="username">
+          <label for="firstName">First Name:</label>
+          <input type="text" class="form-control" name='user[firstName]' id="firstName" autofocus required placeholder="First Name">
+        </div>
+        <div class="form-group">
+          <label for="lastName">Last Name:</label>
+          <input type="text" class="form-control" name='user[lastName]' id="lastName" autofocus required placeholder="First Name">
         </div>
         <div class="form-group">
           <label for="password">Password:</label>
