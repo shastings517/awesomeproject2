@@ -59,20 +59,20 @@ router.post('/', function(req,res) {
                   post.user = user._id;
                   //assign point values to post schema variables
                   if(post.sleep >= 8){
-                    post.score += 0;
-                  }
-                  else if(post.sleep >= 5){
                     post.score -= 10;
                   }
-                  if(post.sleep >= 1){
+                  else if(post.sleep >= 5){
+                    post.score -= 15;
+                  }
+                  else if(post.sleep >= 1){
                     post.score -= 20;
                   }
-                  if(post.sleep === 0){
-                    post.score -= 30;
+                  else if(post.sleep === 0){
+                    post.score -= 25;
                   }
                   console.log(post.score);
                   if(post.meditate === "no"){
-                    post.score -= 20;
+                    post.score -= 15;
                   }
                   console.log(post.score);
                   if(post.diet === "poor"){
@@ -89,7 +89,7 @@ router.post('/', function(req,res) {
                   }
                   console.log(post.score);
                   if(post.improvements === "" || post.improvements === "none" || post.improvements === "nothing" || post.improvements === "no"){
-                    post.score -=10;
+                    post.score -= 5;
                   }
 
                   post.score += (post.lowSentiment + post.highSentiment) * 9;
@@ -102,21 +102,13 @@ router.post('/', function(req,res) {
             });
           }
           else {
-              console.log("uhhh we fucked up...", error, response);
+            console.log("uhhh we fucked up...", error, response);
           }
         });
-
-        
     });
     }
   });
 });
-
-// router.get('/', function(req, res){
-//   console.log(req.user.accessToken);
-  
-//   res.render('user/index', { user: req.user });
-// });
 
 //SHOW POST
 router.get('/:id', function(req,res){
