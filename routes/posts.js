@@ -52,6 +52,7 @@ router.post('/', function(req,res) {
                 if (!error && response.statusCode == 200) {
                   console.log(JSON.parse(body).docSentiment.score);
                   post.lowSentiment = JSON.parse(body).docSentiment.score;
+                  post.score = post.lowSentiment + post.highSentiment;
                   user.posts.push(post);
                   console.log(post);
                   post.user = user._id;

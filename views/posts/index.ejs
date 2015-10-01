@@ -21,7 +21,7 @@
   <% posts.forEach(function (el) { %>
     <tr>
       <td><a href="/posts/<%= el.id%>"><%=el.date%></a></td>
-      <td><%= el.high.slice(0, 90) %>...</td>
+      <td><%= el.high.slice(0, 75) %>...</td>
       <td><%= el.score %></td>
       <td>
         <form action="/posts/<%= el.id%>?_method=delete" method="POST"><button class="btn btn-lg">Delete</button></form>
