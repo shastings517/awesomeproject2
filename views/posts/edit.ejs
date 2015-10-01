@@ -1,5 +1,4 @@
 <% include ../partials/header %>
-
   <div class="container">
     <form action="/posts/<%=post.id%>?_method=put" method="POST">
       <h1>EDIT ENTRY</h1>
@@ -25,20 +24,20 @@
 
       <div class="input-group">
         <span class="input-group-addon" id="basic-addon1">Meditate</span>
-        <select class="form-control" name="post[meditate]" value="<%= post.meditate %>">
-          <option value="yes">Yes</option>
-          <option value="no">No</option>
+        <select class="form-control" name="post[meditate]">
+          <option <%= post.meditate === "yes" ? "selected=selected" : "" %> value="yes">yes</option>
+          <option <%= post.meditate === "no" ? "selected=selected" : "" %> value="no">no</option>
         </select>
       </div>
 
       <div class="input-group">
         <span class="input-group-addon" id="basic-addon1" value="<%= post.diet %>">Diet</span>
-        <select class="form-control" name="post[meditate]">
-          <option value="poor">poor</option>
-          <option value="ok">ok</option>
-          <option value="fair">fair</option>
-          <option value="good">good</option>
-          <option value="excellent">excellent</option>
+        <select class="form-control" name="post[diet]">
+          <option <%= post.diet === "poor" ? "selected=selected" : "" %> value="poor">poor</option>
+          <option <%= post.diet === "ok" ? "selected=selected" : "" %> value="ok">ok</option>
+          <option <%= post.diet === "fair" ? "selected=selected" : "" %> value="fair">fair</option>
+          <option <%= post.diet === "good" ? "selected=selected" : "" %> value="good">good</option>
+          <option <%= post.diet === "excellent" ? "selected=selected" : "" %> value="excellent">excellent</option>
         </select>
       </div>
       
