@@ -95,9 +95,11 @@ router.post('/', function(req,res) {
                   post.score += (post.lowSentiment + post.highSentiment) * 9;
                   post.score = (post.score).toFixed(2);
                   
-                  post.save();
-                  user.save();
-                  res.redirect("/posts");
+                  post.save(function(err,post){
+                    user.save(function(err,user){
+                      res.redirect("/posts");
+                    });
+                  });
                 }
             });
           }
