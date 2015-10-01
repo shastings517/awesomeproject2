@@ -13,6 +13,7 @@ var postSchema = new mongoose.Schema ({
                     meditate: String,
                     diet: String,
                     improvements: String,
+                    score: Number, 
                     author: {
                       type: mongoose.Schema.Types.ObjectId,
                       ref: "User"

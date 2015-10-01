@@ -3,23 +3,23 @@
     <div class="row">
       <% if(currentuser){ %>
         <div class="col-xs-8 col-xs-offset-2">
-          <h1 class="text-center"><%= currentuser.username %></h1>
+          <!-- <h1 class="text-center"><%= currentuser.username %></h1> -->
+          <h1 class="text-center">Posts</h1>
         </div>
         <div class="col-xs-2">
-          <div class="btn btn-default">
-            <a href="/posts/new">Add a new post</a>
-          </div>
+          <a href="/posts/new" class="btn btn-default">Add a new post</a>
         </div>  
       <% }  %>
     </div>
-    <h1>Posts</h1>
+    <!-- <h1>Posts</h1> -->
   </div>
-  <table>
+  <table class="table table-hover">
     <thead>
-      <td>Date</td>
-      <td>Sleep</td>
-      <td>Meditate</td>
-      <td>Diet</td>
+      <td class="col-xs-3"><strong>Date</strong></td>
+      <td class="col-xs-8"><strong>High</strong></td>
+      <!-- <td>Meditate</td> -->
+      <td class="col-xs-1"><strong>Score</strong></td>
+      <!-- <td class="col-xs-3"></td> -->
     </thead>
   <% posts.forEach(function (el) { %>
     <tr>
