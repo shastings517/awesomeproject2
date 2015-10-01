@@ -11,13 +11,16 @@ var express = require('express'),
     usersRoutes = require("./routes/users"),
     postsRoutes = require("./routes/posts"),
     // commentsRoutes = require("./routes/comments"),
-    accessRoutes = require("./routes/access");
-    request = require('request');
+    accessRoutes = require("./routes/access"),
+    request = require('request'),
+    favicon = require('serve-favicon');
+
 
 app.set('view engine', 'ejs');
 app.use(morgan('tiny'));
 app.use(methodOverride('_method'));
 app.use(express.static(__dirname + '/public'));
+app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.use(session({
