@@ -71,6 +71,7 @@ router.post('/', function(req,res) {
                   if(post.sleep === 0){
                     post.score -= 30;
                   }
+                  console.log(post.score);
                   if(post.meditate === "no"){
                     post.score -= 20;
                   }
@@ -83,17 +84,20 @@ router.post('/', function(req,res) {
                   else if(post.diet === "fair"){
                     post.score -= 10;
                   }
+                  console.log(post.score);
                   if(post.improvements === "" || post.improvements === "none" || post.improvements === "nothing" || post.improvements === "no"){
                     post.score -=10;
                   }
+                  console.log(post.score);
                   if(post.lowSentiment + post.highSentiment > 0){
-                    post.score += ((post.lowSentiment + post.highSentiment) * 10);
+                    post.score += (post.lowSentiment + post.highSentiment) * 10;
                     post.score.toFixed(2);
                   }
-                  else{
-                    post.score -= ((post.lowSentiment + post.highSentiment) * 10);
+                  else if(post.lowSentiment + post.highSentiment < 0){
+                    post.score -= (post.lowSentiment + post.highSentiment) * 10;
                     post.score.toFixed(2);
                   }
+                  console.log(post.score);
                   
                   post.save();
                   user.save();

@@ -44,6 +44,6 @@ app.get('*', function(req,res){
 });
 
 //START SERVER
-app.listen(process.env.PORT || 4000, function() {
-  "Server is listening on port 4000";
+app.listen(process.env.PORT || 3000, function() {
+  "Server is listening on port 3000";
 });
