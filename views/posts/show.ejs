@@ -1,124 +1,46 @@
 <% include ../partials/header %>
 
-<!-- <script src='/javascripts/comments.js'></script>
-<div class="ui page grid">
-  <h1 class="ui dividing header"><%= post.title  %></h1>
-</div>
-
-<div id="postShow" class="ui items row">
-  <div class="item">
-
-    <div class="ui small image">
-      <img src="<%= post.media %>">
-    </div>
-
-    <div class="middle aligned content">
-      <div class="header"><%= post.date %></div>
-      <div class="description">
-        <p><%= post.body %></p>
-      </div>
-      <div class="extra">
-        <a class="ui center floated purple button" href="/posts/<%= post.id %>/edit">Edit</a>
-        <form action="/posts/<%= post.id %>?_method=delete" method="POST" style="float:right;">
-          <input class="ui red button" type="submit" value="delete">
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="ui page grid">
-  <h4 class="ui dividing header">Comments</h4>
-</div>
-<div class="ui page grid">
-  <a href="/posts/<%= post._id%>/comments" class="ui black basic button">See all comments</a>
-  <a href="/posts/<%= post._id%>/comments/new" class="ui black basic button">Add a new comment</a>
-  <a href="/posts" class="ui basic button">Back</a>
-  <h4 class="ui header"></h4>
-  <div id="comments"></div>
-</div> -->
-
-<!-- <table style="" class="table">
-      <div class="container text-center">
-        <h1>ENTRY DETAILS</h1>
-        <thead class="tdHeader text-center">
-          <td>Date</td>
-          <td>Sleep</td>
-          <td>Meditate</td>
-          <td>Diet</td>
-        </thead>
-        <tr class="text-center">
-          <td><%= post.date %></td>
-          <td><%= post.sleep %></td>
-          <td><%= post.meditate %></td>
-          <td><%= post.diet %></td> 
-        </tr>
-        <tr>
-          <thead>
-            <td>High</td>
-            <td><%= post.high %></td>
-            
-          </thead>
-        </tr>
-        <tr>
-          <td>Low</td>
-          <td><%= post.low %></td>
-        </tr>
-        <tr>
-          <td>Improvements</td>
-          <td><%= post.improvements %></td>
-        </tr>
-      </div>
-    </table>
-    <div>
-      <a href="/posts/<%= post.id%>/edit"><button class="btn btn-lg">Edit</button></a>
-    </div>
-    <div class="text-center">
-      <a href="/"><button class="btn btn-lg">Home</button></a>
-    </div> -->
-
     <div class="container">
-      <!-- <form action="/posts" method="POST"> -->
-        <h1>ENTRY INFO</h1>
-        <div class="input-group">
-          <span class="input-group-addon" id="basic-addon1">Date</span>
-          <span class="form-control"><%= post.date %></span>
-        </div>
+      <h1>ENTRY INFO</h1>
 
-        <div class="input-group">
-          <span class="input-group-addon" id="basic-addon1">High</span>
-          <span class="form-control"><%= post.high %></span>
-        </div>
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon1">Date</span>
+        <span class="form-control"><%= post.date %></span>
+      </div>
 
-        <div class="input-group">
-          <span class="input-group-addon" id="basic-addon1">Low</span>
-          <span class="form-control"><%= post.low %></span>
-        </div>
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon1">High</span>
+        <span class="form-control"><%= post.high %></span>
+      </div>
 
-        <div class="input-group">
-          <span class="input-group-addon" id="basic-addon1">Sleep</span>
-          <span class="form-control"><%= post.sleep %></span>
-        </div>
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon1">Low</span>
+        <span class="form-control"><%= post.low %></span>
+      </div>
 
-        <div class="input-group">
-          <span class="input-group-addon" id="basic-addon1">Meditate</span>
-          <span class="form-control"><%= post.meditate %></span>
-        </div>
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon1">Sleep</span>
+        <span class="form-control"><%= post.sleep %></span>
+      </div>
 
-        <div class="input-group">
-          <span class="input-group-addon" id="basic-addon1">Diet</span>
-          <span class="form-control"><%= post.diet %></span>
-        </div>
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon1">Meditate</span>
+        <span class="form-control"><%= post.meditate %></span>
+      </div>
 
-        <div class="input-group">
-          <span class="input-group-addon" id="basic-addon1">Improvements</span>
-          <span class="form-control"><%= post.improvements %></span>
-        </div>
-        <div>
-          <a href="/posts/<%= post.id%>/edit"><button class="btn btn-lg">Edit</button></a>
-        </div>
-        <!-- <input type="submit" value="submit" class="btn btn-lg submitButton"> -->
-      <!-- </form> -->
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon1">Diet</span>
+        <span class="form-control"><%= post.diet %></span>
+      </div>
+
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon1">Improvements</span>
+        <span class="form-control"><%= post.improvements %></span>
+      </div>
+
+      <div>
+        <a href="/posts/<%= post.id%>/edit"><button class="btn btn-lg">Edit</button></a>
+      </div>
     </div>
-
 
 <% include ../partials/footer %>

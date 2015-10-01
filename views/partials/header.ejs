@@ -31,9 +31,8 @@
           <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
               <li class="active"><a href="/posts">Home</a></li>
-              <!-- <li><a href="/signup">Home</a></li> -->
               <% if(currentUser) { %>
-              <li><a href="/users/show"><strong><%= currentUser.username %></strong></a></li> <!--WHY DOES THIS HAVE TO BE CAPITALIZED-->
+              <li><a href="/users/show"><strong><%= currentUser.username %></strong></a></li>
               <% } %>
             </ul>
             <ul class="nav navbar-nav navbar-right">
@@ -52,14 +51,7 @@
               <% } else { %>
                 <a href="/logout" class="btn btn-default">Logout</a>
               <% } %>
-
-              
             </ul>
           </div>
         </div>
       </nav>
-
-
-
-
-
