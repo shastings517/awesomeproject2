@@ -1,6 +1,7 @@
 var db = require("../models");
 
 var loginHelpers = function (req, res, next) {
+  console.log("LOGIN HELPERS JUST RAN!")
   req.login = function (user) {
     req.session.id = user._id;
   };

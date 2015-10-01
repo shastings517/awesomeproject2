@@ -5,7 +5,7 @@ var routeMiddleware = require("../middleware/routeHelper");
 var loginMiddleware = require("../middleware/loginHelper");
 var request = require("request");
 
-router.use(loginMiddleware);
+// router.use(loginMiddleware);
 
 
 /********* POST ROUTES *********/

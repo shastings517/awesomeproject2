@@ -28,17 +28,16 @@ app.use(session({
   name: "double chocochip"
 }));
 
-
-// ROUTES
-app.use("/",usersRoutes);
-app.use("/posts",postsRoutes);
-// app.use("/posts/:post_id/comments",commentsRoutes);
-app.use("/",accessRoutes);
-
-//ROOT
 app.get('/', function(req,res){
   res.redirect('/signup');
 });
+
+// ROUTES
+app.use("/posts", loginMiddleware, postsRoutes);
+app.use("/",loginMiddleware, accessRoutes);
+app.use("/",loginMiddleware, usersRoutes);
+
+//ROOT
 
 //CATCH ALL
 app.get('*', function(req,res){
