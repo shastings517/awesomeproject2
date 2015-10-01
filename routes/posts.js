@@ -54,7 +54,6 @@ router.post('/', function(req,res) {
                   console.log(JSON.parse(body).docSentiment.score);
                   post.lowSentiment = JSON.parse(body).docSentiment.score;
                   console.log(post.date);
-                  // post.score = post.lowSentiment + post.highSentiment;
                   user.posts.push(post);
                   console.log(post);
                   post.user = user._id;
@@ -76,12 +75,15 @@ router.post('/', function(req,res) {
                     post.score -= 20;
                   }
                   if(post.diet === "poor"){
-                    post.score -= 30;
+                    post.score -= 25;
                   }
                   else if(post.diet === "ok"){
                     post.score -= 20;
                   }
                   else if(post.diet === "fair"){
+                    post.score -= 15;
+                  }
+                  else if(post.diet === "good"){
                     post.score -= 10;
                   }
                   console.log(post.score);
