@@ -84,7 +84,9 @@ body{
   /*margin-top: 100px;*/
 
 }
-
+.deleteBtn{
+  height: 50px;
+}
 
 
 

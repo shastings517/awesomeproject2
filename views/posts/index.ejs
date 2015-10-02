@@ -23,7 +23,7 @@
         <td class="tdstyle"><i class="fa fa-battery-empty text-danger"></i></td>
       <% } %>
         <td>
-          <form action="/posts/<%= el.id%>?_method=delete" method="POST"><button class="btn btn-lg">Delete</button></form>
+          <form action="/posts/<%= el.id%>?_method=delete" method="POST"><button class="btn btn-lg deleteBtn">Delete</button></form>
         </td>
       </tr>
     <% }) %>
