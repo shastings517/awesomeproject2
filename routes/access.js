@@ -4,8 +4,6 @@ var router = express.Router();
 var routeMiddleware = require("../middleware/routeHelper");
 var loginMiddleware = require("../middleware/loginHelper");
 
-// router.use(loginMiddleware);
-
 
 router.get('/login', routeMiddleware.preventLoginSignup, function(req,res){
   res.render('users/login');

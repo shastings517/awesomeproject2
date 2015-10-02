@@ -5,8 +5,6 @@ var routeMiddleware = require("../middleware/routeHelper");
 var loginMiddleware = require("../middleware/loginHelper");
 var request = require("request");
 
-// router.use(loginMiddleware);
-
 
 /********* POST ROUTES *********/
 
@@ -137,7 +135,7 @@ router.get('/:id/edit', function(req,res){
 
 //UPDATE POST
 router.put('/:id', function(req,res){
-  console.log("THIS IS WHATS COMING IN ", req.body)
+  console.log("THIS IS WHATS COMING IN ", req.body);
   var show_page = "/posts/" + req.params.id;
   db.Post.findByIdAndUpdate(req.params.id, req.body.post, function(err,post){
     if (err) {
@@ -202,7 +200,6 @@ router.put('/:id', function(req,res){
                   post.save();
                   user.save();
                   res.redirect(show_page);
-                  // res.redirect("/posts");
                 }
             });
           }
