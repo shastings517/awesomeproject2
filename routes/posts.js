@@ -197,9 +197,13 @@ router.put('/:id', function(req,res){
                   post.score += (post.lowSentiment + post.highSentiment) * 9;
                   post.score = (post.score).toFixed(2);
                   
+                  // post.save();
+                  // user.save();
+                  // res.redirect(show_page);
                   post.save();
                   user.save();
                   res.redirect(show_page);
+                  
                 }
             });
           }

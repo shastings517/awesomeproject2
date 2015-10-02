@@ -1,4 +1,4 @@
-.ui.purple.inverted {
+/*.ui.purple.inverted {
   border-radius: 0;
 }
 
@@ -37,4 +37,29 @@
 .input-group-addon {
     min-width: 150px;
     text-align:left;
+}*/
+
+
+.fa-battery-full {
+  color: #70DE2D;
 }
+
+
+.fa-battery-three-quarters {
+  color: #FFD04E;
+}
+
+.fa-battery-half {
+  color: #FFC34B;
+}
+.fa-battery-quarter {
+  color: #E87740;
+}
+.fa-battery-empty {
+  color: #FF2043;
+} 
+
+.logoutBtn {
+  
+}
+

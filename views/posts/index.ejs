@@ -1,46 +1,36 @@
 <% include ../partials/header %>
-
   <div class="container-fluid">
-    <div class="row">
-      <% if(currentuser){ %>
-        <div class="col-xs-10 text-left">
-          <h1>Entries</h1>
-        </div>
-        <div class="col-xs-2 text-right">
-          <a href="/posts/new" class="btn btn-default">Add Entry</a>
-        </div>  
-      <% }  %>
+    <table class="table table-hover">
+      <thead>
+        <td class="col-xs-2"><strong>Date</strong></td>
+        <td class="col-xs-9"><strong>Entry</strong></td>
+        <td class="col-xs-1"><strong>Score</strong></td>
+      </thead>
+    <% posts.forEach(function (el) { %>
+      <tr>
+        <td><a href="/posts/<%= el.id%>"><%=el.date%></a></td>
+        <td><%= el.high.slice(0, 75) %>...</td>
+        <td><%= el.score %></td>
+      <% if(el.score > 80) { %>
+        <td><i class="fa fa-battery-full text-success"></i></td>
+      <% } else if(el.score > 60) { %>
+        <td><i class="fa fa-battery-three-quarters text-info"></i></td>
+      <% } else if(el.score > 40) { %>
+        <td><i class="fa fa-battery-half text-warning"></i></td>
+      <% } else if(el.score > 20) { %>
+        <td><i class="fa fa-battery-quarter text-danger"></i></td>
+      <% } else if(el.score > 0) { %>
+        <td><i class="fa fa-battery-empty text-danger"></i></td>
+      <% } %>
+        <td>
+          <form action="/posts/<%= el.id%>?_method=delete" method="POST"><button class="btn btn-lg">Delete</button></form>
+        </td>
+      </tr>
+    <% }) %>
+    </table>
+    <div class="text-right">
+      <a href="/posts/new"><button class="btn btn-lg">Add Entry</button></a>
     </div>
   </div>
-  <table class="table table-hover">
-    <thead>
-      <td class="col-xs-2"><strong>Date</strong></td>
-      <td class="col-xs-9"><strong>Entry</strong></td>
-      <td class="col-xs-1"><strong>Score</strong></td>
-    </thead>
-  <% posts.forEach(function (el) { %>
-    <tr>
-      <td><a href="/posts/<%= el.id%>"><%=el.date%></a></td>
-      <td><%= el.high.slice(0, 75) %>...</td>
-      <td><%= el.score %></td>
-    <% if(el.score > 80) { %>
-      <td><i class="fa fa-battery-full text-success"></i></td>
-    <% } else if(el.score > 60) { %>
-      <td><i class="fa fa-battery-three-quarters text-info"></i></td>
-    <% } else if(el.score > 40) { %>
-      <td><i class="fa fa-battery-half text-warning"></i></td>
-    <% } else if(el.score > 20) { %>
-      <td><i class="fa fa-battery-quarter text-warning"></i></td>
-    <% } else if(el.score > 0) { %>
-      <td><i class="fa fa-battery-empty text-danger"></i></td>
-    <% } %>
-
-      <td>
-        <form action="/posts/<%= el.id%>?_method=delete" method="POST"><button class="btn btn-lg">Delete</button></form>
-      </td>
-    </tr>
-  <% }) %>
-  </table>
-
 <% include ../partials/footer %>
 
