@@ -1,43 +1,7 @@
-/*.ui.purple.inverted {
-  border-radius: 0;
-}
-
-.right.menu {
-  padding: 5px 0;
-}
-
-.ui.page.grid {
-  margin-top: 30px;
-}
-
-#newPost {
-  margin-bottom: 30px;
-}
-
-.right {
-  float: right;
-}
-
-#allPosts,
-#postShow,
-#allComments {
-  margin: 40px 80px;
-}
-
-#deletePost {
-  position: relative;
-  bottom: -15ps;
-  right: 80px;
-}
-
-.ui.items > .item .extra {
-  width: 168px;
-}
-
 .input-group-addon {
     min-width: 150px;
     text-align:left;
-}*/
+}
 
 
 .fa-battery-full {
@@ -60,6 +24,67 @@
 } 
 
 .logoutBtn {
-  
+
 }
+
+.tdstyle {
+  min-height: 10px;
+}
+
+.navbar-right {
+  margin-top: 13px;
+}
+
+.navl {
+  margin-top: 5px;
+}
+
+/*.signheader {
+  margin-top: 80px;
+  margin-bottom: 30px;
+}*/
+
+.signupdiv {
+  margin-top: 140px;
+  height: 500px;
+}
+
+.jumbotron {
+  padding: 30px;
+  -webkit-box-shadow: inset 0px 0px 33px 2px rgba(112,134,143,1);
+  -moz-box-shadow: inset 0px 0px 33px 2px rgba(112,134,143,1);
+  box-shadow: inset 0px 0px 33px 2px rgba(112,134,143,1);
+}
+.loginBtn {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.homeBtn{
+  margin-top: 5px;
+}
+.navbar{
+  /*background-url: http://api.thumbr.it/whitenoise-361x370.png?background=4ea6caff&noise=626262&density=51&opacity=70*/
+  background: url(http://api.thumbr.it/whitenoise-361x370.png?background=b2def0ff&noise=9e989e&density=51&opacity=70);
+  border-bottom: 2px solid gray;
+  border-left: 2px solid gray;
+  border-right: 2px solid gray;
+}
+
+.brandx {
+  color: black;
+}
+.classBtn {
+  border: 1px solid gray;
+}
+body{
+  background: url(http://api.thumbr.it/whitenoise-361x370.png?background=ffffffff&noise=626262&density=15&opacity=15);
+}
+
+.table-hover{
+  /*margin-top: 100px;*/
+
+}
+
+
+
 

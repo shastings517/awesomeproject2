@@ -1,10 +1,11 @@
 <% include ../partials/header %>
 
-<h1 class="text-center">Sign Up</h1>
-<div class="container-fluid">
+<div class="container-fluid signupdiv">
+  
   <div class="row">
     <div class="col-md-8 col-md-offset-2"> 
       <form action='/signup' class="jumbotron" method='POST'>
+        <h2 class="text-center signheader">Sign Up</h2>
         <div class="form-group">
           <label for="firstName">First Name:</label>
           <input type="text" class="form-control" name='user[firstName]' id="firstName" autofocus required placeholder="First Name">
