@@ -2,7 +2,7 @@ var db = require("../models");
 var express = require("express");
 var router = express.Router();
 var routeMiddleware = require("../middleware/routeHelper");
-var loginMiddleware = require("../middleware/loginHelper");
+// var loginMiddleware = require("../middleware/loginHelper");
 
 router.get('/users/:id', function(req,res){
   db.User.findById(req.session.id).populate('posts').exec(function (err, user){

@@ -2,7 +2,7 @@ var db = require("../models");
 var express = require("express");
 var router = express.Router();
 var routeMiddleware = require("../middleware/routeHelper");
-var loginMiddleware = require("../middleware/loginHelper");
+// var loginMiddleware = require("../middleware/loginHelper");
 var request = require("request");
 
 
@@ -10,21 +10,35 @@ var request = require("request");
 
 //INDEX
 router.get('/', function(req,res) {
-    if(req.session.id === null){
-      res.redirect('/signup');
-    } 
-    else {
-      db.User.findById(req.session.id).populate('posts').exec(function(err, user){
-        if (err) {
-          console.log(err);
-        }
-        else {
-          console.log(user);
-          res.render('posts/index', {posts: user.posts, currentuser: user});
-        }
-      });
-    }
-});
+  db.User.findById(req.session.id).populate('posts').exec(function(err, user) {
+    if (err) {
+      console.log(err);
+    } else {
+      if(req.session.id === null){
+        res.redirect('/signup');
+      } else {
+          res.render('posts/index', {posts: user.posts, currentuser: user.username});
+      }
+      }
+    });
+  });
+
+// router.get('/', function(req,res) {
+//     if(req.session.id === null){
+//       res.redirect('/signup');
+//     } 
+//     else {
+//       db.User.findById(req.session.id).populate('posts').exec(function(err, user){
+//         if (err) {
+//           console.log(err);
+//         }
+//         else {
+//           console.log(user);
+//           res.render('posts/index', {posts: user.posts, currentuser: user.username});
+//         }
+//       });
+//     }
+// });
 
 //NEW POST
 router.get('/new', routeMiddleware.ensureLoggedIn, function(req,res) {
@@ -50,15 +64,15 @@ router.post('/', function(req,res) {
 
               request("http://gateway-a.watsonplatform.net/calls/text/TextGetTextSentiment?apikey=" + process.env.ALCHEMY_API_KEY + "&outputMode=json&text=" + encodeURIComponent(req.body.post.low),
               function (error, response, body) {
-                console.log("FIRST API CALL ERRORS?", error);
-                console.log("FIRST API CALL BODY?", body);
+                console.log("SECOND API CALL ERRORS?", error);
+                console.log("SECOND API CALL BODY?", body);
                 if (!error && response.statusCode == 200) {
                   post.score = 100;
-                  console.log(JSON.parse(body).docSentiment.score);
+                  // console.log(JSON.parse(body).docSentiment.score);
                   post.lowSentiment = JSON.parse(body).docSentiment.score;
-                  console.log(post.date);
+                  // console.log(post.date);
                   user.posts.push(post);
-                  console.log(post);
+                  // console.log(post);
                   post.user = user._id;
                   //assign point values to post schema variables
                   if(post.sleep >= 8){
@@ -142,21 +156,22 @@ router.put('/:id', function(req,res){
       console.log(err);
       res.render('posts/edit');
     } else {
-      db.User.findById(req.session.id, function(err, user) {
+      console.log('THIS IS REQ.BODY.POST', req.body.post);
+      db.User.findByIdAndUpdate(req.session.id, req.body.user, function(err, user) {
         request("http://gateway-a.watsonplatform.net/calls/text/TextGetTextSentiment?apikey=" + process.env.ALCHEMY_API_KEY + "&outputMode=json&text=" + encodeURIComponent(req.body.post.high),
           function (error, response, body) {
             if (!error && response.statusCode == 200) {
-              console.log(JSON.parse(body).docSentiment.score);
+              // console.log(JSON.parse(body).docSentiment.score);
               post.highSentiment = JSON.parse(body).docSentiment.score;
 
               request("http://gateway-a.watsonplatform.net/calls/text/TextGetTextSentiment?apikey=" + process.env.ALCHEMY_API_KEY + "&outputMode=json&text=" + encodeURIComponent(req.body.post.low),
               function (error, response, body) {
                 if (!error && response.statusCode == 200) {
                   post.score = 100;
-                  console.log(JSON.parse(body).docSentiment.score);
+                  // console.log(JSON.parse(body).docSentiment.score);
                   post.lowSentiment = JSON.parse(body).docSentiment.score;
-                  console.log(post.date);
-                  user.posts.push(post);
+                  // console.log(post.date);
+                  // user.posts.push(post);
                   console.log(post);
                   post.user = user._id;
                   //assign point values to post schema variables
@@ -172,11 +187,11 @@ router.put('/:id', function(req,res){
                   else if(post.sleep === 0){
                     post.score -= 25;
                   }
-                  console.log(post.score);
+                  // console.log(post.score);
                   if(post.meditate === "no"){
                     post.score -= 15;
                   }
-                  console.log(post.score);
+                  // console.log(post.score);
                   if(post.diet === "poor"){
                     post.score -= 25;
                   }
@@ -189,20 +204,23 @@ router.put('/:id', function(req,res){
                   else if(post.diet === "good"){
                     post.score -= 10;
                   }
-                  console.log(post.score);
+                  console.log(post);
                   if(post.improvements === "" || post.improvements === "none" || post.improvements === "nothing" || post.improvements === "no"){
                     post.score -= 10;
                   }
 
                   post.score += (post.lowSentiment + post.highSentiment) * 9;
                   post.score = (post.score).toFixed(2);
+                  console.log(post.score);
                   
                   // post.save();
                   // user.save();
                   // res.redirect(show_page);
-                  post.save();
-                  user.save();
-                  res.redirect(show_page);
+                  post.save(function(err,post){
+                    user.save(function(err,user){
+                      res.redirect(show_page);
+                    });
+                  });
                   
                 }
             });

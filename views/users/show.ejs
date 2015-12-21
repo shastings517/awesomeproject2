@@ -1,7 +1,7 @@
 <% include ../partials/header %>
 
 <h1><%= currentUser.firstName + " " + currentUser.lastName %> </h1>
-<h1><%= currentUser.posts.length %> </h1>
+<h1><%= "# of posts: " + (currentUser.posts.length - 55) %> </h1>
 
 <canvas id="myChart" width="400" height="400"></canvas>
 

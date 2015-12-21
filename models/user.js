@@ -1,3 +1,5 @@
+//change firstName to username
+
 var bcrypt = require('bcrypt');
 var SALT_WORK_FACTOR = 10;
 var mongoose = require('mongoose');
@@ -5,14 +7,12 @@ var mongoose = require('mongoose');
 mongoose.set('debug', true);
 
 var userSchema = new mongoose.Schema ({
-                      firstName: {
+                      username: {
                         type: String,
-                        required: true
-                        },
-                      lastName: {
-                        type: String,
-                        required: true
-                        },
+                        required: true,
+                        lowercase: true,
+                        unique: true
+                      },
                       password: {type: String, required: true},
                       posts: [{
                         type: mongoose.Schema.Types.ObjectId,
