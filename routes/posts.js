@@ -14,11 +14,12 @@ router.get('/', function(req,res) {
     if (err) {
       console.log(err);
     } else {
-      if(req.session.id === null){
-        res.redirect('/signup');
-      } else {
+        if(req.session.id === null){
+          res.redirect('/signup');
+        } 
+        else {
           res.render('posts/index', {posts: user.posts, currentuser: user.username});
-      }
+        }
       }
     });
   });
@@ -151,13 +152,14 @@ router.get('/:id/edit', function(req,res){
 router.put('/:id', function(req,res){
   console.log("THIS IS WHATS COMING IN ", req.body);
   var show_page = "/posts/" + req.params.id;
-  db.Post.findByIdAndUpdate(req.params.id, req.body.post, function(err,post){
+  db.Post.findByIdAndUpdate(req.params.id, req.body.post, {new:true}, function(err,post){
     if (err) {
       console.log(err);
       res.render('posts/edit');
     } else {
       console.log('THIS IS REQ.BODY.POST', req.body.post);
-      db.User.findByIdAndUpdate(req.session.id, req.body.user, function(err, user) {
+      console.log('THIS IS POST', post);
+      // db.User.findById(req.session.id, function(err, user) {
         request("http://gateway-a.watsonplatform.net/calls/text/TextGetTextSentiment?apikey=" + process.env.ALCHEMY_API_KEY + "&outputMode=json&text=" + encodeURIComponent(req.body.post.high),
           function (error, response, body) {
             if (!error && response.statusCode == 200) {
@@ -172,8 +174,8 @@ router.put('/:id', function(req,res){
                   post.lowSentiment = JSON.parse(body).docSentiment.score;
                   // console.log(post.date);
                   // user.posts.push(post);
-                  console.log(post);
-                  post.user = user._id;
+                  // console.log(post);
+                  // post.user = user._id;
                   //assign point values to post schema variables
                   if(post.sleep >= 8){
                     post.score -= 10;
@@ -204,22 +206,22 @@ router.put('/:id', function(req,res){
                   else if(post.diet === "good"){
                     post.score -= 10;
                   }
-                  console.log(post);
+                  // console.log(post);
                   if(post.improvements === "" || post.improvements === "none" || post.improvements === "nothing" || post.improvements === "no"){
                     post.score -= 10;
                   }
 
                   post.score += (post.lowSentiment + post.highSentiment) * 9;
                   post.score = (post.score).toFixed(2);
-                  console.log(post.score);
+                  console.log("POST SCORE", post.score);
                   
                   // post.save();
                   // user.save();
                   // res.redirect(show_page);
                   post.save(function(err,post){
-                    user.save(function(err,user){
+                    // user.save(function(err,user){
                       res.redirect(show_page);
-                    });
+                    // });
                   });
                   
                 }
@@ -229,7 +231,7 @@ router.put('/:id', function(req,res){
             console.log("uhhh we fucked up...", error, response);
           }
         });
-      });
+      // });
       
     }
   });

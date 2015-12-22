@@ -16,7 +16,7 @@ var favicon = require('serve-favicon');
 
 
 app.set('view engine', 'ejs');
-app.use(morgan('tiny'));
+// app.use(morgan('tiny'));
 app.use(methodOverride('_method'));
 app.use(express.static(__dirname + '/public'));
 app.use(favicon(__dirname + '/public/favicon.ico'));
